@@ -4,3 +4,9 @@ export interface ILoginResponse {
   tokenType: string;
   crsfToken: string;
 }
+
+export interface IJwtPayload {
+  sub: string;
+  exp: number;
+  iat: number;
+}

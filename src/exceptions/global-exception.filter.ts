@@ -31,7 +31,9 @@ export class GlobalExceptionFilter implements ExceptionFilter {
         case HttpStatus.UNAUTHORIZED: //401
           message = message || 'Bạn cần đăng nhập để thực hiện hành động này';
           break;
-
+        case HttpStatus.INTERNAL_SERVER_ERROR: //500
+          message = message || 'Lỗi INTERNAL SERVER ERROR';
+          break;
         default:
           break;
       }
