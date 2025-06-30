@@ -12,13 +12,17 @@ import { CacheableMemory } from 'cacheable';
   imports: [
     AuthModule,
     CacheModule.registerAsync({
+      isGlobal: true,
       useFactory: () => {
         return {
           stores: [
             new Keyv({
               store: new CacheableMemory({ ttl: 60000, lruSize: 5000 }),
+              namespace: 'nestjs-memory-cache',
             }),
-            createKeyv('redis://localhost:6380'),
+            createKeyv('redis://localhost:6379/1', {
+              namespace: 'nestjs_newbie',
+            }),
           ],
         };
       },
